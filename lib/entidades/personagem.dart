@@ -4,11 +4,23 @@ class Personagem {
   int velocidade;
   int escudo;
 
-  Personagem({
-    this.nome = '',
-    this.vida = 1,
-    this.velocidade = 10,
-    this.escudo = 10,
-  });
+  Personagem(
+    this.nome,
+    this.vida,
+    this.velocidade,
+    this.escudo,
+  );
+
+  void defender(int dano) {
+    var danoReal = dano - escudo;
+    if (danoReal > 0 ) {
+      vida -= danoReal;
+    }
+
+
+    
+  }
 }
+
+
 
