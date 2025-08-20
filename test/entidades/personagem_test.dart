@@ -37,6 +37,36 @@ expect(personagem, isA<Personagem>());
       personagem.defender(15);
       expect(personagem.vida, 5);
   });
+  
+  test ('Não deve reduzir a vida ao receber dano menor ou igual ao escudo', (){ //DANO - ESCUDO
+      final personagem = Personagem('Ana', 10, 10, 10);
+      expect(personagem.vida, 10);
+      personagem.defender(9);
+      expect(personagem.vida, 10);
+  });
+
+  test('A vida não pode ser menor que zero', (){
+      final personagem = Personagem('Carlos', 10, 5, 10);
+      expect(personagem.vida, 10);
+      personagem.defender(20);
+     expect(personagem.vida, 0); 
+  });
+  test('Deve verificar corretamente se está vivo', (){
+      final personagem = Personagem('Carlos', 10, 5, 10);
+      expect(personagem.vida, 10);
+      personagem.defender(20);
+      expect(personagem.estaVivo(), false);
+  });
+
+  test('Deve aplicar ataque corretamente ao oponente',(){
+    final atacante = Personagem('Guerreiro', 10, 10, 10);
+    final defensor = Personagem('Mago', 10, 10, 10);
+    
+    atacante.atacar(defensor, 15);
+
+    expect(defensor.vida, 5);
+  });
+
 });
 
 }
