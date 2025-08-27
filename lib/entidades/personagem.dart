@@ -1,28 +1,34 @@
 class Personagem {
-  String nome;
-  int vida;
-  int velocidade;
-  int escudo;
+  String _nome;
+  int _vida;
+  int _velocidade;
+  int _escudo;
 
-  Personagem(this.nome, this.vida, this.velocidade, this.escudo);
+  Personagem(this._nome, this._vida, this._velocidade, this._escudo);
+
+
+int get vida => _vida;
+String get nome => _nome;
+int get escudo => _escudo;
+int get velocidade => _velocidade;
 
   void defender(int dano) {
-    var danoReal = dano - escudo;
+    var danoReal = dano - _escudo;
     if (danoReal > 0) {
-      vida -= danoReal;
+      _vida -= danoReal;
     }
-    if (vida < 0) {
-      vida = 0;
+    if (_vida < 0) {
+      _vida = 0;
     }
   }
 
   bool estaVivo() {
-    return vida > 0;
+    return _vida > 0;
   }
 
   void atacar(Personagem oponente, int dano) {
-    print('Nome do atacante: $nome');
-    print('Nome do defensor: ${oponente.nome}');
+    print('Nome do atacante: $_nome');
+    print('Nome do defensor: ${oponente._nome}');
     oponente.defender(dano);
   }
   
